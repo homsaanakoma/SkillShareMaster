@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillShareMaster - Skill Exchange Community</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        section {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .listing {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to SkillShareMaster</h1>
+        <p>Your Skill Exchange Community</p>
+    </header>
+    
+    <section id="findSkills">
+        <h2>Find Skills</h2>
+        <p>Discover skills you can learn or teach. Find your skill exchange partner today.</p>
+        <button id="exploreBtn" class="btn">Start Exploring</button>
+    </section>
+    
+    <section id="skillListings" class="hidden">
+        <h2>Skill Listings</h2>
+        <div id="listings">
+            <!-- Dynamic skill listings will be displayed here -->
+        </div>
+    </section>
+    
+    <script>
+        // Sample skill listings (replace with dynamic data from a database)
+        const sampleListings = [
+            { title: "Learn JavaScript", description: "Basic to advanced JavaScript programming", proficiency: "Intermediate" },
+            { title: "Teach Cooking", description: "Cooking classes for beginners", proficiency: "Expert" },
+            { title: "Photography Skills", description: "Master the art of photography", proficiency: "Advanced" }
+        ];
+
+        // Function to display skill listings
+        function displayListings() {
+            const listingsContainer = document.getElementById("listings");
+            listingsContainer.innerHTML = "";
+
+            sampleListings.forEach((listing, index) => {
+                const listingDiv = document.createElement("div");
+                listingDiv.className = "listing";
+                listingDiv.innerHTML = `
+                    <h3>${listing.title}</h3>
+                    <p>${listing.description}</p>
+                    <p>Proficiency: ${listing.proficiency}</p>
+                    <button onclick="requestSkill(${index})" class="btn">Request Skill</button>
+                `;
+                listingsContainer.appendChild(listingDiv);
+            });
+        }
+
+        // Function to simulate a skill request (replace with actual functionality)
+        function requestSkill(index) {
+            const selectedListing = sampleListings[index];
+            alert(`Request sent for "${selectedListing.title}"`);
+        }
+
+        // Event listener for the explore button
+        const exploreBtn = document.getElementById("exploreBtn");
+        exploreBtn.addEventListener("click", () => {
+            exploreBtn.style.display = "none";
+            displayListings();
+            const skillListings = document.getElementById("skillListings");
+            skillListings.classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>
